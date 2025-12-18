@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Men Strength Training</title>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <h1>💪 Men Strength Training</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="workouts.html">Workouts</a></li>
+        <li><a href="exercises.html">Exercises</a></li>
+        <li><a href="profile.html" class="active">Profile</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+      </ul>
+    </nav>
+
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <div class="profile-avatar">
+        <span id="userInitial">U</span>
+      </div>
+      <h2 id="userName">User Name</h2>
+      <p id="userEmail">user@example.com</p>
+      <p>Member since <span id="joinDate">2025</span></p>
+    </div>
+
+    <!-- Profile Content -->
+    <div class="profile-content">
+      <!-- Stats -->
+      <div class="profile-stats">
+        <div class="stat-card">
+          <h3>✅</h3>
+          <p>Account Active</p>
+        </div>
+        <div class="stat-card">
+          <h3>🏋️</h3>
+          <p>Training Ready</p>
+        </div>
+        <div class="stat-card">
+          <h3>💪</h3>
+          <p>Keep Going!</p>
+        </div>
+      </div>
+
+      <!-- Account Information -->
+      <div class="info-card">
+        <h2 style="margin-bottom: 20px; color: #1976d2;">Account Information</h2>
+        <p><strong>Name:</strong> <span id="userNameDisplay">Loading...</span></p>
+        <p><strong>Email:</strong> <span id="userEmailDisplay">Loading...</span></p>
+        <p><strong>Member Since:</strong> <span id="joinDateDisplay">Loading...</span></p>
+        <p><strong>Status:</strong> <span class="badge">Active</span></p>
+      </div>
+
+      <!-- Actions -->
+      <div class="profile-actions">
+        <button class="btn btn-secondary" onclick="window.location.href='register.html'">Edit Profile</button>
+        <button class="btn" id="logoutBtnBottom">Logout</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 Men Strength Training</p>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/profile.js"></script>
+  </body>
+
+</html>
