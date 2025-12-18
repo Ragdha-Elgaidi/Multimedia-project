@@ -178,59 +178,63 @@ function closeModal() {
 // =============================================
 
 function addExerciseToProfile() {
-  // Check if user is logged in
-  if (typeof getCurrentUser !== "function") {
-    alert("Please login to add exercises to your profile.");
-    window.location.href = "login.html";
-    return;
+  try {
+    // Check if user is logged in
+    if (typeof getCurrentUser !== "function") {
+      alert("Authentication system not loaded. Please refresh the page.");
+      return;
+    }
+
+    const user = getCurrentUser();
+    if (!user) {
+      alert("Please login to add exercises to your profile.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    if (!currentExercise) {
+      alert("No exercise selected.");
+      return;
+    }
+
+    // Get user's exercises
+    const key = `exercises_${user.email}`;
+    let userExercises = JSON.parse(localStorage.getItem(key)) || [];
+
+    // Check if exercise already exists
+    const exists = userExercises.some((ex) => ex.name === currentExercise.name);
+    if (exists) {
+      alert("This exercise is already in your profile!");
+      return;
+    }
+
+    // Prompt for sets and reps
+    const sets = prompt("Enter number of sets:", "3");
+    if (!sets || sets.trim() === "") return;
+
+    const reps = prompt("Enter number of reps:", "10");
+    if (!reps || reps.trim() === "") return;
+
+    const notes = prompt("Enter notes (optional):", "");
+
+    // Add exercise to user's profile
+    userExercises.push({
+      name: currentExercise.name,
+      sets: sets.trim(),
+      reps: reps.trim(),
+      notes: notes.trim(),
+      addedDate: new Date().toISOString(),
+    });
+
+    // Save to localStorage
+    localStorage.setItem(key, JSON.stringify(userExercises));
+
+    alert("Exercise added to your profile successfully!");
+    closeModal();
+  } catch (error) {
+    console.error("Error adding exercise to profile:", error);
+    alert("An error occurred. Please try again.");
   }
-
-  const user = getCurrentUser();
-  if (!user) {
-    alert("Please login to add exercises to your profile.");
-    window.location.href = "login.html";
-    return;
-  }
-
-  if (!currentExercise) {
-    alert("No exercise selected.");
-    return;
-  }
-
-  // Get user's exercises
-  const key = `exercises_${user.email}`;
-  let userExercises = JSON.parse(localStorage.getItem(key)) || [];
-
-  // Check if exercise already exists
-  const exists = userExercises.some((ex) => ex.name === currentExercise.name);
-  if (exists) {
-    alert("This exercise is already in your profile!");
-    return;
-  }
-
-  // Prompt for sets and reps
-  const sets = prompt("Enter number of sets:", "3");
-  if (!sets) return;
-
-  const reps = prompt("Enter number of reps:", "10");
-  if (!reps) return;
-
-  const notes = prompt("Enter notes (optional):", "");
-
-  // Add exercise to user's profile
-  userExercises.push({
-    name: currentExercise.name,
-    sets: sets,
-    reps: reps,
-    notes: notes,
-    addedDate: new Date().toISOString(),
-  });
-
-  // Save to localStorage
-  localStorage.setItem(key, JSON.stringify(userExercises));
-
-  alert("Exercise added to your profile successfully!");
-  closeModal();
 }
 
 // =============================================

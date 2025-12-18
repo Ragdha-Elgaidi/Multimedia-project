@@ -193,29 +193,6 @@ if (document.getElementById("loginForm")) {
 }
 
 // =============================================
-// LOGOUT BUTTON
-// =============================================
-const logoutBtn = document.getElementById("logoutBtn");
-if (logoutBtn) {
-  logoutBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-    if (confirm("Are you sure you want to logout?")) {
-      logout();
-    }
-  });
-}
-
-const logoutBtnBottom = document.getElementById("logoutBtnBottom");
-if (logoutBtnBottom) {
-  logoutBtnBottom.addEventListener("click", function (e) {
-    e.preventDefault();
-    if (confirm("Are you sure you want to logout?")) {
-      logout();
-    }
-  });
-}
-
-// =============================================
 // UPDATE NAVIGATION BASED ON LOGIN STATE
 // =============================================
 function updateNavigation() {
@@ -268,6 +245,17 @@ function updateNavigation() {
 // Call updateNavigation on page load
 document.addEventListener("DOMContentLoaded", function () {
   updateNavigation();
+  
+  // Attach logout event to bottom button on profile page
+  const logoutBtnBottom = document.getElementById("logoutBtnBottom");
+  if (logoutBtnBottom) {
+    logoutBtnBottom.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (confirm("Are you sure you want to logout?")) {
+        logout();
+      }
+    });
+  }
 });
 
 // =============================================
