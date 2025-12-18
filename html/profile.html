@@ -14,7 +14,6 @@
       <h1>💪 Men Strength Training</h1>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="workouts.html">Workouts</a></li>
         <li><a href="exercises.html">Exercises</a></li>
         <li><a href="profile.html" class="active">Profile</a></li>
         <li><a href="#" id="logoutBtn">Logout</a></li>
@@ -33,34 +32,26 @@
 
     <!-- Profile Content -->
     <div class="profile-content">
-      <!-- Stats -->
-      <div class="profile-stats">
-        <div class="stat-card">
-          <h3>✅</h3>
-          <p>Account Active</p>
-        </div>
-        <div class="stat-card">
-          <h3>🏋️</h3>
-          <p>Training Ready</p>
-        </div>
-        <div class="stat-card">
-          <h3>💪</h3>
-          <p>Keep Going!</p>
-        </div>
-      </div>
-
       <!-- Account Information -->
       <div class="info-card">
-        <h2 style="margin-bottom: 20px; color: #1976d2;">Account Information</h2>
+        <h2>Account Information</h2>
         <p><strong>Name:</strong> <span id="userNameDisplay">Loading...</span></p>
         <p><strong>Email:</strong> <span id="userEmailDisplay">Loading...</span></p>
         <p><strong>Member Since:</strong> <span id="joinDateDisplay">Loading...</span></p>
         <p><strong>Status:</strong> <span class="badge">Active</span></p>
       </div>
 
+      <!-- My Exercises Section -->
+      <div class="info-card">
+        <h2> My Exercises</h2>
+        <div id="exercisesList">
+          <p>Loading exercises...</p>
+        </div>
+        <button class="btn btn-add-exercise" onclick="addSampleExercise()">+ Add Sample Exercise</button>
+      </div>
+
       <!-- Actions -->
       <div class="profile-actions">
-        <button class="btn btn-secondary" onclick="window.location.href='register.html'">Edit Profile</button>
         <button class="btn" id="logoutBtnBottom">Logout</button>
       </div>
     </div>

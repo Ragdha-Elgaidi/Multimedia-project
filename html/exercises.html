@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>💪 Exercises - Men Strength Training</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <h1>💪 Men Strength Training</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="exercises.html" class="active">Exercises</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container" id="exercises">
+      <h2>Workout Exercises</h2>
+      <p class="subtitle">Click any exercise to view details and watch the tutorial</p>
+
+      <div class="exercises-grid" id="exercisesGrid"></div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="detailsModal">
+      <div class="modal-card">
+        <button class="close-btn" id="closeModalBtn" aria-label="Close">×</button>
+
+        <div class="modal-body">
+          <h2 id="modalTitle">Exercise Title</h2>
+          <p id="modalDesc" class="modal-desc"></p>
+
+          <div class="video-container">
+            <h3>Video Tutorial</h3>
+            <video id="modalVideo" controls>
+              <source src="" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <div class="steps-box">
+            <h3>Key Steps</h3>
+            <ul id="modalSteps"></ul>
+          </div>
+
+          <div class="modal-meta">
+            <span class="badge" id="modalLevel">Level</span>
+            <span class="badge" id="modalTarget">Target</span>
+          </div>
+
+          <button class="btn" id="addToProfileBtn" style="margin-right: 10px;">➕ Add to My Profile</button>
+          <button class="btn btn-secondary" id="modalCloseBtn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+      <p>© 2025 Men Strength Training</p>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/exercises.js"></script>
+  </body>
+
+</html>

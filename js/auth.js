@@ -158,19 +158,21 @@ function logout() {
 // REGISTER PAGE
 // =============================================
 if (document.getElementById("registerForm")) {
-  document.getElementById("registerForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+  document
+    .getElementById("registerForm")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
 
-    if (register(name, email, password, confirmPassword)) {
-      alert("Registration successful!");
-      window.location.href = "profile.html";
-    }
-  });
+      if (register(name, email, password, confirmPassword)) {
+        alert("Registration successful!");
+        window.location.href = "profile.html";
+      }
+    });
 }
 
 // =============================================
@@ -212,6 +214,61 @@ if (logoutBtnBottom) {
     }
   });
 }
+
+// =============================================
+// UPDATE NAVIGATION BASED ON LOGIN STATE
+// =============================================
+function updateNavigation() {
+  const currentUser = getCurrentUser();
+  const navLinks = document.querySelector(".nav-links");
+
+  if (!navLinks) return;
+
+  if (currentUser) {
+    // User is logged in - show profile and logout
+    navLinks.innerHTML = `
+      <li><a href="index.html">Home</a></li>
+      <li><a href="exercises.html">Exercises</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="#" id="logoutBtn">Logout</a></li>
+    `;
+
+    // Reattach logout event listener
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (confirm("Are you sure you want to logout?")) {
+          logout();
+        }
+      });
+    }
+  } else {
+    // User is not logged in - show login and register
+    navLinks.innerHTML = `
+      <li><a href="index.html">Home</a></li>
+      <li><a href="exercises.html">Exercises</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="register.html">Register</a></li>
+    `;
+  }
+
+  // Highlight active page
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const links = navLinks.querySelectorAll("a");
+  links.forEach((link) => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+}
+
+// Call updateNavigation on page load
+document.addEventListener("DOMContentLoaded", function () {
+  updateNavigation();
+});
 
 // =============================================
 // PROTECT PROFILE PAGE
